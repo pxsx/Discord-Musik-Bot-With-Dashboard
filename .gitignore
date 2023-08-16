@@ -1,0 +1,12 @@
+/node_modules/
+/dist/*
+!/dist/public/
+!/dist/public/*
+/.idea/
+token.txt
+owner.txt
+youtube-api.txt
+.env.test
+.env
+.env.replit
+todo.md

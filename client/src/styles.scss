@@ -1,0 +1,129 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// Define a light theme
+$light-primary: mat.define-palette(mat.$deep-purple-palette);
+$light-accent: mat.define-palette(mat.$amber-palette);
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $light-primary,
+    accent: $light-accent,
+  )
+));
+
+// Define a dark theme
+$dark-primary: mat.define-palette(mat.$purple-palette);
+$dark-accent: mat.define-palette(mat.$green-palette);
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent,
+  )
+));
+
+// Apply the dark theme by default
+@include mat.all-component-themes($dark-theme);
+
+// Apply the light theme only when the `.my-light-theme` CSS class is applied
+// to an ancestor element of the components (such as `body`).
+.lightTheme {
+  @include mat.all-component-colors($light-theme);
+}
+
+/* You can add global styles to this file, and also import other style files */
+body, html, app-root {
+  width: 100%;
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+.mat-expansion-panel-body {
+  padding: 5px 0 5px 5px !important;
+  > div {
+    background: #303030;
+  }
+}
+
+.lightTheme .mat-expansion-panel-body > div {
+  background: white;
+}
+
+snack-bar-container {
+  &.error {
+    background: red;
+    color: white;
+  }
+}
+
+.disabled {
+  color: gray;
+}
+
+.lightTheme .disabled {
+  color: lightgray;
+}
+
+::-webkit-scrollbar {
+  width: 0.1rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #555;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ccc;
+}
+
+.lightTheme {
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ccc;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+.shadow-bottom {
+  box-shadow: 0 0.4rem 0.2rem -0.05rem rgba(0, 0, 0, 0.1);
+}
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #303030;
+}
+
+.lightTheme .sticky-top {
+  background: #fafafa;
+}
+
+.mat-tab-body-wrapper, .mat-tab-body-content, mat-tab-body, mat-tab-header, mat-tab-group {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
